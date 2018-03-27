@@ -1,3 +1,4 @@
+
 <?php
 $mysql = new mysqli("localhost","root","Shady2010","Trainer");
 if ($mysql->errno != 0)
@@ -10,7 +11,7 @@ if ($mysql->errno != 0)
 $Name=$_POST["Name"];
 $Password=$_POST["Password"];
 
-$sql = "SELECT * FROM Login WHERE Name='$Name' AND Password =SHA1('$Password');";
+$sql = "SELECT * FROM ClientS WHERE User='$Name' AND Password =SHA1('$Password');";
 
 $response = $mysql->query($sql);
 if ($mysql->errno != 0)
@@ -24,7 +25,7 @@ if ($mysql->errno != 0)
 while($result = $response->fetch_assoc())
 {
 
-$get = "select * from ClientD ;";
+$get = "select * from ClientS;";
 $response = $mysql->query($get);
 if ($mysql->errno != 0)
 
@@ -47,7 +48,6 @@ echo $argv[0]."".PHP_EOL;
 
 <?php
 
-
 $mysql = new mysqli("localhost","root","Shady2010","Trainer");
 if ($mysql->errno != 0)
 {
@@ -55,6 +55,7 @@ if ($mysql->errno != 0)
         exit(0);
 }
 
+$Name=$_POST["Name"];
 $sql="select * from ClientD";
 $records=$mysql->query($sql);
 ?>
@@ -90,26 +91,7 @@ echo "</tr>";
 
 }
 
-
-
 ?>
-</table>
-</body>
-</html>
-
-<html>
-  <title>Update yout schudule </title>
- <h1>Update Trainer Name</h1>
-  <body>
-  <form name="MY Form"action="TU2.php" method="POST">
-  Trainer name<br><input type="text"name="TName">
-  <br><br>ID<br><input typy="password" name="TID">
-  <br>
-  <input type="submit"name="button1"value="login">
-  </form>
-  </body>
-</html>
-
 <?php
 
 
@@ -123,6 +105,11 @@ if ($mysql->errno != 0)
 $sql="select * from ClientS";
 $records=$mysql->query($sql);
 ?>
+</html>
+</body>
+</table>
+</head>
+
 
 <html>
 <head>
@@ -220,6 +207,7 @@ echo "</tr>";
 </body>
 </html>
 
+
 <html>
   <title>Update yout schudule </title>
  <h1>Update workout</h1>
@@ -233,5 +221,6 @@ echo "</tr>";
   </form>
   </body>
 </html>
+
 
 
