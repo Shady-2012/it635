@@ -1,5 +1,6 @@
+
 <?php
-echo $argv[0].PHP_EOL;
+
 $mysql = new mysqli("localhost","root","Shady2010","Trainer");
 if ($mysql->errno != 0)
 {
@@ -8,32 +9,23 @@ if ($mysql->errno != 0)
 }
 
 
-$TID=$_POST["TID"];
-$TName=$_POST["TName"];
+$CID=$_POST["CID"];
+$Day=$_POST["Day"];
+$WO=$_POST["WO"];
 
-$sql = "Update ClientD SET Trainer='$TName' WHERE ID='$TID';";
+$sql = "Update ClientS SET $Day='$WO' WHERE ID='$CID';";
 
 $response = $mysql->query($sql);
 
-$get = "select * from ClientD ;";
-$response = $mysql->query($get);
-if ($mysql->errno != 0)
-
-{
+$sec = "select * from ClientS ;";
+$response = $mysql->query($sec);
+if ($mysql->errno != 0){
         echo "error executing sql: ".$mysql->error.PHP_EOL;
-        echo $get.PHP_EOL;
-        exit(0);
-}
-
+        echo $sec.PHP_EOL;
+        exit(0);}
 while($result = $response->fetch_assoc())
-{
-
- //       print_r($result);
-
-        echo PHP_EOL;
-}
-
-?>
+{//       print_r($result);
+echo PHP_EOL;}?>
 
 <?php
 $mysql = new mysqli("localhost","root","Shady2010","Trainer");
@@ -42,44 +34,46 @@ if ($mysql->errno != 0)
         echo "error connecting to database: ".$mysql->error.PHP_EOL;
         exit(0);
 }
-
-$sql="select * from ClientD";
+$sql="select * from ClientS";
 $records=$mysql->query($sql);
 ?>
-
 <html>
 <head>
-<title>Schedule Updated</title>
+ <h1>workout Schudele</h1>
 </head>
 <body>
-
 <table width="600" border="1" cellpadding="1" cellspacing="1">
 <tr>
-
 <th>Client Name</th>
 <th>ID</th>
-<th>Weight</th>
-<th>Trainere</th>
-<th>Programe Detailes</th>
-
+<th>Saturday</th>
+<th>Sunday</th>
+<th>Monday</th>
+<th>Tuesday</th>
+<th>Wednesday</th>
+<th>thursday</th>
+<th>Friday</th>
 <tr>
-
 <?php
-
-while($ClientD = $records->fetch_assoc())
+while($ClientS = $records->fetch_assoc())
 {
 echo "<tr>";
-echo "<td>".$ClientD['ClientName']."</td>";
-echo "<td>".$ClientD['ID']."</td>";
-echo "<td>".$ClientD['Weight']."</td>";
-echo "<td>".$ClientD['Trainer']."</td>";
-echo "<td>".$ClientD['ClientDetails']."</td>";
+echo "<td>".$ClientS['User']."</td>";
+echo "<td>".$ClientS['ID']."</td>";
+echo "<td>".$ClientS['Saturday']."</td>";
+echo "<td>".$ClientS['Sunday']."</td>";
+echo "<td>".$ClientS['Monday']."</td>";
+echo "<td>".$ClientS['Tuesday']."</td>";
+echo "<td>".$ClientS['Wednesday']."</td>";
+echo "<td>".$ClientS['Thursday']."</td>";
+echo "<td>".$ClientS['Friday']."</td>";
+
 echo "</tr>";
 
 }
-
 ?>
-</table>
-</body>
 </html>
+</body>
+</table>
+</head>
 
