@@ -10,7 +10,7 @@ if ($mysql->errno != 0)
 
 $Name=$_POST["Name"];
 $Password=$_POST["Password"];
-
+$ID=$_POST["ID"];
 $sql = "SELECT * FROM ClientS WHERE User='$Name' AND Password =SHA1('$Password');";
 
 $response = $mysql->query($sql);
@@ -22,28 +22,12 @@ if ($mysql->errno != 0)
         exit(0);
 }
 
-while($result = $response->fetch_assoc())
-{
-
-$get = "select * from ClientS;";
-$response = $mysql->query($get);
-if ($mysql->errno != 0)
-
-{
-        echo "error executing sql: ".$mysql->error.PHP_EOL;
-        echo $get.PHP_EOL;
-        exit(0);
-}
 
 while($result = $response->fetch_assoc())
 {
-
 //        print_r($result);
 
-        echo PHP_EOL;
-}
-}
-echo $argv[0]."".PHP_EOL;
+        echo PHP_EOL;}
 ?>
 
 <?php
@@ -55,9 +39,10 @@ if ($mysql->errno != 0)
         exit(0);
 }
 
-$Name=$_POST["Name"];
-$sql="select * from ClientD";
-$records=$mysql->query($sql);
+//$Name=$_POST["Name"];
+//$ID=$_POST["1000"];
+$sec="select * from ClientD WHERE ID='$ID';";
+$records=$mysql->query($sec);
 ?>
 
 <html>
@@ -102,7 +87,7 @@ if ($mysql->errno != 0)
         exit(0);
 }
 
-$sql="select * from ClientS";
+$sql="select * from ClientS WHERE ID ='$ID';";
 $records=$mysql->query($sql);
 ?>
 </html>

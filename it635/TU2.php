@@ -30,7 +30,7 @@ if ($mysql->errno != 0)
         exit(0);
 }
 
-$sql="select * from ClientD";
+$sql="select * from ClientD WHERE ID='$TID'";
 $records=$mysql->query($sql);
 ?>
 <html>

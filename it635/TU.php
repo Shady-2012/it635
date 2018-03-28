@@ -34,7 +34,7 @@ if ($mysql->errno != 0)
         echo "error connecting to database: ".$mysql->error.PHP_EOL;
         exit(0);
 }
-$sql="select * from ClientS";
+$sql="select * from ClientS WHERE ID='$CID';";
 $records=$mysql->query($sql);
 ?>
 <html>
