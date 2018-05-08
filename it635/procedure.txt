@@ -1,0 +1,6 @@
+ DELIMITER //
+ CREATE PROCEDURE Contact(IN Name varchar(20), IN Phone Int(25))
+   BEGIN
+   INSERT INTO Contact (Name, Phone) values('shady','201-515-5150');
+   END //
+ DELIMITER ;
